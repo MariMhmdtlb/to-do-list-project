@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="index.js" defer></script>
+    <title>To do list</title>
+</head>
+
+<body>
+    <header>
+        <h1>to do list</h1>
+    </header>
+    <section>
+        <div class="form-container">
+            <form action="">
+                <input type="text" class="todo-input" />
+                <button><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+            </form>
+            <div class="select">
+                <select name="to dos" id="filter-todo">
+            <option class="all" value="all">all</option>
+            <option class="completed" value="completed">completed</option>
+            <option class="uncompleted" value="uncompleted">uncompleted</option>
+          </select>
+            </div>
+        </div>
+        <div class="todo-container">
+            <ul class="todo-list">
+                <li class="todo-item">
+                    <div class="text-container">Task1</div>
+                    <div class="icon-container">
+                        <span><i class="fa fa-check-square" aria-hidden="true"></i></span>
+                        <span><i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+              </span>
+                        <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+
+</html>
