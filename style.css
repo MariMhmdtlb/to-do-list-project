@@ -9,7 +9,7 @@
 /*variables*/
 
 :root {
-    --primaryColor: #6d28d9;
+    --primaryColor: rgb(109, 40, 217);
     --secondaryColor: #ede9fe;
     --mainWhite: #fff;
     --mainBlack: #222;
@@ -18,6 +18,13 @@
     --mainTransition: all 0.3s linear;
     --mainRed: #db2777;
     --bodyColor: #f6f6f6;
+}
+
+button,
+input,
+select {
+    border: none;
+    background-color: transparent;
 }
 
 body {
@@ -32,16 +39,47 @@ body {
     align-items: center;
 }
 
+#todo-completed {
+    opacity: 0.5;
+}
+
+#todo-completed h3 {
+    text-decoration: line-through;
+}
+
 .form-container {
     display: flex;
 }
 
-.form {
+form {
     width: 70%;
+    padding: 3px;
     display: flex;
+    background-color: var(--mainWhite);
 }
 
-form .todo-item {
+form button {
+    color: var(--primaryColor);
+}
+
+.select {
+    border-radius: 3px;
+    background-color: var(--mainGray);
+}
+
+.todo-item {
+    width: 64%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    background-color: rgba(109, 40, 217, 0.2);
+    color: var(--primaryColor);
+}
+
+.icon-container span:nth-child(odd) i {
+    color: var(--primaryColor);
+}
+
+.icon-container span:nth-child(even) i {
+    color: var(--mainRed);
 }
