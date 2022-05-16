@@ -31,6 +31,7 @@ body {
     width: 100vw;
     height: 70vh;
     font-size: 62.5%;
+    font-family: "Bebas Neue", sans-serif;
     color: var(--mainBlack);
     background-color: var(--bodyColor);
     display: flex;
@@ -39,12 +40,16 @@ body {
     align-items: center;
 }
 
-#todo-completed {
+.todo-completed {
     opacity: 0.5;
 }
 
-#todo-completed h3 {
+.todo-completed h3 {
     text-decoration: line-through;
+}
+
+#todo-input:focus {
+    outline: none;
 }
 
 .form-container {
@@ -62,11 +67,6 @@ form button {
     color: var(--primaryColor);
 }
 
-.select {
-    border-radius: 3px;
-    background-color: var(--mainGray);
-}
-
 .todo-item {
     width: 64%;
     display: flex;
@@ -82,4 +82,21 @@ form button {
 
 .icon-container span:nth-child(even) i {
     color: var(--mainRed);
+}
+
+select {
+    width: 100%;
+    border-radius: 3px;
+    color: var(--primaryColor);
+    padding: 0.3rem;
+    border: none;
+    outline: none;
+}
+
+.select {
+    width: 8rem;
+    height: 1.7rem;
+    margin-left: 5px;
+    background-color: var(--mainWhite);
+    cursor: pointer;
 }
