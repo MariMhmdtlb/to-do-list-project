@@ -36,6 +36,7 @@ function checkRemove(e) {
         item.classList.toggle("todo-completed");
         console.log(item.classList);
     } else if (classList[1] === "fa-trash") {
+        removeLocalTodo(item);
         item.remove();
     }
 }
@@ -90,4 +91,14 @@ function getLocalTodo() {
         todoLi.innerHTML = newTodo;
         todoList.appendChild(todoLi);
     });
+}
+
+function removeLocalTodo(todo) {
+    let savedTodos = localStorage.getItem("todos") ?
+        JSON.parse(localStorage.getItem("todos")) :
+        [];
+    const filteredTodos = savedTodos.filter((t) => {
+        return t != todo.children[0].textContent;
+    });
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
 }
