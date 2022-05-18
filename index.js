@@ -7,6 +7,7 @@ const filterOption = document.querySelector("#filter-todo");
 addTodo.addEventListener("click", makeTodo);
 todoList.addEventListener("click", checkRemove);
 filterOption.addEventListener("click", filterTodo);
+document.addEventListener("DOMContentLoaded", getLocalTodo());
 //functions
 function makeTodo(input) {
     input.preventDefault();
@@ -20,9 +21,10 @@ function makeTodo(input) {
                         <span><i class="fa fa-trash" aria-hidden="true"></i></span>
                      </div>`;
     todoLi.innerHTML = newTodo;
-    saveToLocal(todoLi);
+
     //add to dom
     todoList.appendChild(todoLi);
+    saveToLocal(todoInput.value);
     //reset value
     todoInput.value = "";
 }
@@ -40,8 +42,8 @@ function checkRemove(e) {
 
 function filterTodo(e) {
     const filterClass = e.target.value;
-    const todoItems = [...todoList.childNodes];
-    console.log(todoItems);
+    const todoItems = [...todoList.children];
+
     todoItems.forEach((t) => {
         const todoClasses = [...t.classList];
         switch (filterClass) {
@@ -64,12 +66,28 @@ function filterTodo(e) {
     });
 }
 
-function saveToLocal(todos) {
-    const todoItems = document.querySelectorAll(".todo-item");
-    let savedTodos = localStorage.getItem("todoItems") ?
-        JSON.parse(localStorage.getItem("todoItems")) :
+function saveToLocal(todo) {
+    let savedTodos = localStorage.getItem("todos") ?
+        JSON.parse(localStorage.getItem("todos")) :
         [];
-    savedTodos.push(todoItems);
-    localStorage.setItem("todoItems", JSON.stringify(savedTodos));
-    console.log(savedTodos);
+    savedTodos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(savedTodos));
+}
+
+function getLocalTodo() {
+    let savedTodos = localStorage.getItem("todos") ?
+        JSON.parse(localStorage.getItem("todos")) :
+        [];
+
+    savedTodos.forEach((t) => {
+        const todoLi = document.createElement("li");
+        todoLi.classList.add("todo-item");
+        const newTodo = `<h3 class="text-title">${t}</h3>
+                     <div class="icon-container">
+                        <span><i class="fa fa-check-square" aria-hidden="true"></i></span>
+                        <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                     </div>`;
+        todoLi.innerHTML = newTodo;
+        todoList.appendChild(todoLi);
+    });
 }
