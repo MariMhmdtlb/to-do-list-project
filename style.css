@@ -29,15 +29,19 @@ select {
 
 body {
     width: 100vw;
-    height: 70vh;
+    height: 50vh;
     font-size: 62.5%;
     font-family: "Bebas Neue", sans-serif;
     color: var(--mainBlack);
     background-color: var(--bodyColor);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+}
+
+header {
+    margin-bottom: 1rem;
 }
 
 .todo-completed {
@@ -57,9 +61,10 @@ body {
 }
 
 form {
-    width: 70%;
+    width: 80%;
     padding: 3px;
     display: flex;
+    justify-content: space-between;
     background-color: var(--mainWhite);
 }
 
@@ -68,7 +73,10 @@ form button {
 }
 
 .todo-item {
-    width: 64%;
+    width: calc(80% - 5px);
+    height: 1.5rem;
+    padding: 0.4rem;
+    margin-top: 8px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -85,18 +93,17 @@ form button {
 }
 
 select {
-    width: 100%;
-    border-radius: 3px;
     color: var(--primaryColor);
+    background-color: var(--mainWhite);
     padding: 0.3rem;
+    border-radius: 3px;
     border: none;
     outline: none;
 }
 
 .select {
-    width: 8rem;
+    width: 20%;
     height: 1.7rem;
     margin-left: 5px;
-    background-color: var(--mainWhite);
     cursor: pointer;
 }
