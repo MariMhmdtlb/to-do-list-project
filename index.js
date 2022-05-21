@@ -13,18 +13,29 @@ function makeTodo(input) {
     input.preventDefault();
     //get value
     //create new todo
-    const todoLi = document.createElement("li");
-    todoLi.classList.add("todo-item");
-    const newTodo = `<h3 class="text-title">${todoInput.value}</h3>
+    if (todoInput.value === "") {
+        alert("please add some task!");
+        return false;
+    } else {
+        if (doesntRepeated(todoInput)) {
+            const todoLi = document.createElement("li");
+            todoLi.classList.add("todo-item");
+            const newTodo = `<h3 class="text-title">${todoInput.value}</h3>
                      <div class="icon-container">
                         <span><i class="fa fa-check-square" aria-hidden="true"></i></span>
                         <span><i class="fa fa-trash" aria-hidden="true"></i></span>
                      </div>`;
-    todoLi.innerHTML = newTodo;
+            todoLi.innerHTML = newTodo;
 
-    //add to dom
-    todoList.appendChild(todoLi);
-    saveToLocal(todoInput.value);
+            //add to dom
+            todoList.appendChild(todoLi);
+
+            saveToLocal(todoInput.value);
+        } else {
+            alert("Task already exist!");
+            return false;
+        }
+    }
     //reset value
     todoInput.value = "";
 }
@@ -101,4 +112,18 @@ function removeLocalTodo(todo) {
         return t != todo.children[0].textContent;
     });
     localStorage.setItem("todos", JSON.stringify(filteredTodos));
+}
+
+function doesntRepeated(input) {
+    let savedTodos = localStorage.getItem("todos") ?
+        JSON.parse(localStorage.getItem("todos")) :
+        [];
+    console.log(input.value);
+    let isRepeated = savedTodos.filter((todo) => {
+            if (todo == input.value) return todo;
+        }).length ?
+        false :
+        true;
+    console.log(isRepeated);
+    return isRepeated;
 }
